@@ -2,6 +2,18 @@ from pathlib import Path
 from google.cloud import secretmanager
 import os
 import environ
+import json
+import base64
+from google.oauth2 import service_account
+
+encoded_creds = os.getenv("GOOGLE_CREDENTIALS_BASE64")
+if encoded_creds:
+    creds_json = base64.b64decode(encoded_creds).decode("utf-8")
+    credentials_dict = json.loads(creds_json)
+    credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+else:
+    credentials = None
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
