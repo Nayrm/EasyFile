@@ -29,7 +29,7 @@ def get_secret(name):
 
 SECRET_KEY = get_secret('django_secret_key')
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
-hosts = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1')
+hosts = os.getenv('easyfileapp-797b8bd15a4f.herokuapp.com', 'DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1')
 ALLOWED_HOSTS = hosts.split(',')
 
 GS_BUCKET_NAME = get_secret('gcs_bucket_name')
